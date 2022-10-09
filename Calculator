@@ -1,0 +1,98 @@
+import java.util.Scanner;
+/**
+ * Calculates minumum grade needed for an A in the class
+ *
+ * @Matthew RObillard 12/15/2021
+ */
+public class MinA
+{
+    //variable declerations
+    private double denomator,numerator, target, targetGrade;
+    private int categories;
+
+    public double totalPoints()
+    {
+        double L = -1;
+        Scanner input = new Scanner(System.in);
+        System.out.println("input earned TOTAL points for the class, if you would like to input them individually input anything");
+        System.out.println("Enter 0 to escape");
+        L =input.nextDouble(); 
+        for (int i =0;  L != 0 ; i++)
+        {
+            System.out.println("Enter the total points for each assignment");
+
+            L = input.nextDouble();                                                             
+
+            denomator += L;
+            System.out.println("total: " + denomator   );
+        }
+        denomator += L;
+        return denomator;
+
+    }
+
+    public double earnedPoints()
+    {
+        double L = -1;
+
+        System.out.println("input earned points for the class");
+        System.out.println("Enter 0 to escape");
+        Scanner input = new Scanner(System.in);
+
+        for (int i =0;  L != 0 ; i++)
+        {
+            System.out.println("Enter the earned grade points for each assignment");
+
+            L = input.nextDouble();                                                             
+
+            numerator += L;
+            System.out.println("total: " + numerator);
+
+        }
+
+        return numerator;
+    }
+
+    public String calc(double testPoints){
+        double temp = 0.0;
+        denomator += testPoints;
+        target = Math.abs((denomator/10) - denomator);
+        System.out.println("Please input the minumum percentage  grade you want in the class");
+                Scanner input2 = new Scanner(System.in);
+
+        targetGrade = input2.nextDouble();
+                target = Math.abs((denomator*Math.abs((targetGrade-1))) - denomator);
+                        System.out.println("target" + target);
+
+        for ( double i = testPoints; i + numerator +.5 >= target ; i-= .1)
+        {
+            temp = i;
+        }
+        return ""+ temp;
+
+    }
+    public double gradeCategories(int categories)
+    {
+        for (int i = categories; i  >0; i--)
+        {
+            
+            
+        }
+        
+        return categories;
+    }
+    public static void main (String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+
+        MinA total = new MinA();
+
+        MinA object = new MinA();
+        System.out.println(total.totalPoints());
+        System.out.println(total.earnedPoints());
+        System.out.println("Please input how much the test is worth");
+
+        System.out.println("Minimum grade you need on the test to get your target: " + total.calc(input.nextDouble()));
+
+    }
+}
